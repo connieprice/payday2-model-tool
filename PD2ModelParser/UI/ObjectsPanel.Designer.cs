@@ -123,7 +123,7 @@ namespace PD2ModelParser.UI
             this.modelFile.AllowDrop = true;
             this.modelFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.modelFile.Filter = "Diesel Model (*.model)|*.model";
+            this.modelFile.Filter = "Diesel Model (*.diesel)|*.diesel";
             this.modelFile.Location = new System.Drawing.Point(98, 3);
             this.modelFile.Name = "modelFile";
             this.modelFile.SaveMode = false;

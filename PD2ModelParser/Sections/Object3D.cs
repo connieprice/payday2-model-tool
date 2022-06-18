@@ -118,12 +118,14 @@ namespace PD2ModelParser.Sections
 
             if (section.End > instream.BaseStream.Position)
                 remaining_data = instream.ReadBytes((int) (section.End - instream.BaseStream.Position));
+
+            Console.WriteLine("e");
         }
 
         public Object3D(BinaryReader instream)
         {
             // In Object3D::load
-            this.HashName = new HashName(instream.ReadUInt64());
+            this.HashName = new HashName(instream.ReadCString());
 
             // in dsl::ParamBlock::load
             uint child_count = instream.ReadUInt32();
@@ -137,6 +139,7 @@ namespace PD2ModelParser.Sections
             }
             postloadCallbacks.Add((self, sections) => Animations.AddRange(animation_ids.Select(i => sections.ContainsKey(i) ? (IAnimationController)sections[i] : null)));
 
+            Matrix4x4 unknownMatrix = instream.ReadMatrix();
             // In Object3D::load
             Matrix4x4 transform = instream.ReadMatrix();
 
@@ -146,6 +149,8 @@ namespace PD2ModelParser.Sections
 
             Transform = transform;
 
+            instream.ReadByte(); // Strange padding.
+
             PostLoadRef<Object3D>(instream.ReadUInt32(), i => this.Parent = i);
 
             this.remaining_data = null;
@@ -153,22 +158,22 @@ namespace PD2ModelParser.Sections
 
         public override void StreamWriteData(BinaryWriter outstream)
         {
-            outstream.Write(this.HashName.Hash);
-            outstream.Write(this.Animations.Count);
-            foreach (var item in this.Animations)
-            {
-                outstream.Write((item?.SectionId).GetValueOrDefault());
-                outstream.Write((ulong) 0); // Bit to skip - the PD2 binary does the exact same thing
-            }
+            //outstream.Write(this.HashName.Hash);
+            //outstream.Write(this.Animations.Count);
+            //foreach (var item in this.Animations)
+            //{
+            //    outstream.Write((item?.SectionId).GetValueOrDefault());
+            //    outstream.Write((ulong) 0); // Bit to skip - the PD2 binary does the exact same thing
+            //}
 
-            outstream.Write(this.Transform);
-            outstream.Write(this.Transform.M41); // Write the position out again, as for some reason
-            outstream.Write(this.Transform.M42); // it's not stored in the main matrix
-            outstream.Write(this.Transform.M43);
-            outstream.Write(this.parentID);
+            //outstream.Write(this.Transform);
+            //outstream.Write(this.Transform.M41); // Write the position out again, as for some reason
+            //outstream.Write(this.Transform.M42); // it's not stored in the main matrix
+            //outstream.Write(this.Transform.M43);
+            //outstream.Write(this.parentID);
 
-            if (this.remaining_data != null)
-                outstream.Write(this.remaining_data);
+            //if (this.remaining_data != null)
+            //    outstream.Write(this.remaining_data);
         }
 
         public override string ToString()

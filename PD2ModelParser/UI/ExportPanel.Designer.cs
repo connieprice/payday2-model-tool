@@ -82,7 +82,7 @@
             this.inputFileBox.AllowDrop = true;
             this.inputFileBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputFileBox.Filter = "Diesel Model(*.model)|*.model";
+            this.inputFileBox.Filter = "Diesel Model(*.diesel)|*.diesel";
             this.inputFileBox.Location = new System.Drawing.Point(70, 7);
             this.inputFileBox.Name = "inputFileBox";
             this.inputFileBox.SaveMode = false;

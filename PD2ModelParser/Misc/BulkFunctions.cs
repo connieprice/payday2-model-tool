@@ -26,7 +26,7 @@ namespace PD2ModelParser
 
         public static IEnumerable<(string fullpath, string relativepath, FullModelData data)> EveryModel(string root)
         {
-            foreach (var i in WalkDirectoryTreeDepth(new DirectoryInfo(root), "*.model"))
+            foreach (var i in WalkDirectoryTreeDepth(new DirectoryInfo(root), "*.diesel"))
             {
                 FullModelData fmd = null;
                 try

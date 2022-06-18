@@ -15,13 +15,13 @@ namespace PD2ModelParser.Exporters
 
         public static string ExportFile(FullModelData data, string filepath)
         {
-            string output_file = filepath.Replace(".model", ".obj");
+            string output_file = filepath.Replace(".diesel", ".obj");
 
             GenerateOutputInfo(data, "outinfo.txt");
 
             ExportObj(data, output_file); // TODO configure output file
 
-            ExportPatternUVObj(data, filepath.Replace(".model", "_pattern_uv.obj")); // TODO configure output file
+            ExportPatternUVObj(data, filepath.Replace(".diesel", "_pattern_uv.obj")); // TODO configure output file
 
             return output_file;
         }

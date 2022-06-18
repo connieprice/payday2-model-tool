@@ -238,7 +238,7 @@ namespace PD2ModelParser.UI
 			this.outputBox.AllowDrop = true;
 			this.outputBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.outputBox.Filter = "Diesel Model (*.model)|*.model";
+			this.outputBox.Filter = "Diesel Model (*.diesel)|*.diesel";
 			this.outputBox.Location = new System.Drawing.Point(108, 270);
 			this.outputBox.MinimumSize = new System.Drawing.Size(0, 23);
 			this.outputBox.MultiFile = false;
@@ -253,7 +253,7 @@ namespace PD2ModelParser.UI
 			this.baseModelFileBrowser.AllowDrop = true;
 			this.baseModelFileBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.baseModelFileBrowser.Filter = "Diesel Model (*.model)|*.model";
+			this.baseModelFileBrowser.Filter = "Diesel Model (*.diesel)|*.diesel";
 			this.baseModelFileBrowser.Location = new System.Drawing.Point(108, 3);
 			this.baseModelFileBrowser.MinimumSize = new System.Drawing.Size(0, 23);
 			this.baseModelFileBrowser.MultiFile = false;

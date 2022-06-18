@@ -42,7 +42,7 @@ namespace PD2ModelParser.Sections
             this.SectionId = section.id;
             this.size = section.size;
 
-            this.HashName = new HashName(instream.ReadUInt64());
+            this.HashName = new HashName(instream.ReadCString());
             this.Flag0 = instream.ReadByte();
             this.Flag1 = instream.ReadByte();
             this.Flag2 = instream.ReadByte();

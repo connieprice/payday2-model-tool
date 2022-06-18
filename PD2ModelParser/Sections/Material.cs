@@ -41,7 +41,7 @@ namespace PD2ModelParser.Sections
             this.SectionId = section.id;
             this.size = section.size;
 
-            this.HashName = new HashName(instream.ReadUInt64());
+            this.HashName = new HashName(instream.ReadCString());
             this.skipped = instream.ReadBytes(48);
             this.count = instream.ReadUInt32();
 

@@ -163,49 +163,48 @@ namespace PD2ModelParser.Sections
 
             this.version = instream.ReadUInt32();
 
-            if (this.version == 6)
-            {
-                this.BoundsMin = instream.ReadVector3();
-                this.BoundsMax = instream.ReadVector3();
+			if (this.version == 6) {
+				this.BoundsMin = instream.ReadVector3();
+				this.BoundsMax = instream.ReadVector3();
 
-                this.v6_unknown7 = instream.ReadSingle();
-                this.v6_unknown8 = instream.ReadUInt32();
-            }
-            else
-            {
-                PostLoadRef<PassthroughGP>(instream.ReadUInt32(), i => PassthroughGP = i);
-                PostLoadRef<TopologyIP>(instream.ReadUInt32(), i => TopologyIP = i);
-                var renderAtomCount = instream.ReadUInt32();
+				this.v6_unknown7 = instream.ReadSingle();
+				this.v6_unknown8 = instream.ReadUInt32();
+			} else {
+				PostLoadRef<PassthroughGP>(instream.ReadUInt32(), i => PassthroughGP = i);
+				PostLoadRef<TopologyIP>(instream.ReadUInt32(), i => TopologyIP = i);
+				var renderAtomCount = instream.ReadUInt32();
 
-                for (int x = 0; x < renderAtomCount; x++)
-                {
-                    RenderAtom item = new RenderAtom();
-                    item.BaseVertex = instream.ReadUInt32();
-                    item.TriangleCount = instream.ReadUInt32();
-                    item.BaseIndex = instream.ReadUInt32();
-                    item.GeometrySliceLength = instream.ReadUInt32();
-                    item.MaterialId = instream.ReadUInt32();
-                    this.RenderAtoms.Add(item);
-                }
+				for (int x = 0; x < renderAtomCount; x++) {
+					instream.ReadUInt32();
 
-                //this.unknown9 = instream.ReadUInt32();
-                PostLoadRef<MaterialGroup>(instream.ReadUInt32(), i => MaterialGroup = i);
-                this.lightset_ID = instream.ReadUInt32(); // this is a section id afaik
+					RenderAtom item = new RenderAtom();
+					item.BaseVertex = instream.ReadUInt32();
+					item.TriangleCount = instream.ReadUInt32();
+					item.BaseIndex = instream.ReadUInt32();
+					item.GeometrySliceLength = instream.ReadUInt32();
+					item.MaterialId = instream.ReadUInt32();
+					this.RenderAtoms.Add(item);
+				}
 
-                // Bitmap that stores properties about the model
-                // Bits:
-                // 1: cast_shadows
-                // 3: has_opacity
-                this.properties_bitmap = instream.ReadUInt32();
+				//this.unknown9 = instream.ReadUInt32();
+				PostLoadRef<MaterialGroup>(instream.ReadUInt32(), i => MaterialGroup = i);
+				this.lightset_ID = instream.ReadUInt32(); // this is a section id afaik
 
-                this.BoundsMin = instream.ReadVector3();
-                this.BoundsMax = instream.ReadVector3();
+				// Bitmap that stores properties about the model
+				// Bits:
+				// 1: cast_shadows
+				// 3: has_opacity
+				this.properties_bitmap = instream.ReadUInt32();
 
-                this.BoundingRadius = instream.ReadSingle();
-                this.unknown13 = instream.ReadUInt32();
-                PostLoadRef<SkinBones>(instream.ReadUInt32(), i => SkinBones = i);
-            }
-            this.remaining_data = null;
+				this.BoundsMin = instream.ReadVector3();
+				this.BoundsMax = instream.ReadVector3();
+
+				this.BoundingRadius = instream.ReadSingle();
+				this.unknown13 = instream.ReadUInt32();
+				PostLoadRef<SkinBones>(instream.ReadUInt32(), i => SkinBones = i);
+			}
+
+			this.remaining_data = null;
             if ((section.offset + 12 + section.size) > instream.BaseStream.Position)
                 remaining_data = instream.ReadBytes((int)((section.offset + 12 + section.size) - instream.BaseStream.Position));
 

@@ -24,7 +24,7 @@ namespace PD2ModelParser.Sections
         public LinearFloatController(System.IO.BinaryReader instream, SectionHeader section)
         {
             SectionId = section.id;
-            HashName = new HashName(instream.ReadUInt64());
+            HashName = new HashName(instream.ReadCString());
             Flags = instream.ReadUInt32();
             Unknown2 = instream.ReadUInt32();
             KeyframeLength = instream.ReadSingle();

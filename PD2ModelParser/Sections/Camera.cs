@@ -29,7 +29,6 @@ namespace PD2ModelParser.Sections
             Unknown3 = instream.ReadSingle();
             Unknown4 = instream.ReadSingle();
             Unknown5 = instream.ReadSingle();
-            Unknown6 = instream.ReadSingle();
         }
 
         public override void StreamWriteData(BinaryWriter outstream)

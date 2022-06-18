@@ -53,7 +53,7 @@ namespace PD2ModelParser.Exporters
                     foreach(var matsec in (section as MaterialGroup).Items)
                     {
                         if (!data.parsed_sections.ContainsKey(matsec.SectionId))
-                            throw new Exception($"BUG: In MaterialGroup {section.SectionId}, Material {matsec.SectionId} isn't registered as part of the .model we're saving");
+                            throw new Exception($"BUG: In MaterialGroup {section.SectionId}, Material {matsec.SectionId} isn't registered as part of the .diesel we're saving");
                         if(!material_sections.Contains(matsec))
                         {
                             material_sections.Add(matsec);

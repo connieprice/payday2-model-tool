@@ -13,7 +13,7 @@ namespace PD2ModelParser
     {
         public static string ExportFile(FullModelData data, string path)
         {
-            path = path.Replace(".model", ".dae");
+            path = path.Replace(".diesel", ".dae");
 
             List<SectionHeader> sections = data.sections;
             Dictionary<UInt32, ISection> parsed_sections = data.parsed_sections;

@@ -53,15 +53,15 @@ namespace PD2ModelParser
                 "",
                 $"Usage: {AppDomain.CurrentDomain.FriendlyName} [OPTIONS]+",
                 "",
-                "Import and export DieselX .model files",
+                "Import and export DieselX .diesel files",
                 "",
                 "If the program is called without any arguments," +
                 " GUI mode is enabled by default.",
                 "If the program is running in command-line mode, then" +
                 " the file commands will be run in sequence, eg.,",
-                "--load=a.model --import=b.obj --root-point=Hips ",
-                "    --import-pattern-uv=b_pattern_uv.obj --save=c.model",
-                "Will import a model called a.model, add an object, and save it as c.model",
+                "--load=a.diesel --import=b.obj --root-point=Hips ",
+                "    --import-pattern-uv=b_pattern_uv.obj --save=c.diesel",
+                "Will import a model called a.diesel, add an object, and save it as c.diesel",
                 "",
                 "Note you can process many models in one run of the program, which is faster" +
                 " than running the program once for each model",
@@ -106,11 +106,11 @@ namespace PD2ModelParser
                     v => script.Add(new NewModel())
                 },
                 {
-                    "load=", "Load a .model file",
+                    "load=", "Load a .diesel file",
                     v => script.Add(new LoadModel() { File = v })
                 },
                 {
-                    "save=", "Save to a .model file",
+                    "save=", "Save to a .diesel file",
                     v => script.Add(new SaveModel() { File = v })
                 },
                 {
@@ -144,7 +144,7 @@ namespace PD2ModelParser
                     v => script.Add(new RunScript() { File = v })
                 },
                 {
-                    "batch-export=", "Recursively scans a directory for .model files and exports them all",
+                    "batch-export=", "Recursively scans a directory for .diesel files and exports them all",
                     v => script.Add(new BatchExport { Directory = v })
                 },
                 {
