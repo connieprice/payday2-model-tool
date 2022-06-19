@@ -158,23 +158,22 @@ namespace PD2ModelParser.Sections
 
         public override void StreamWriteData(BinaryWriter outstream)
         {
-            //outstream.Write(this.HashName.Hash);
-            //outstream.Write(this.Animations.Count);
-            //foreach (var item in this.Animations)
-            //{
-            //    outstream.Write((item?.SectionId).GetValueOrDefault());
-            //    outstream.Write((ulong) 0); // Bit to skip - the PD2 binary does the exact same thing
-            //}
+			outstream.Write(this.HashName.Hash);
+			outstream.Write(this.Animations.Count);
+			foreach (var item in this.Animations) {
+				outstream.Write((item?.SectionId).GetValueOrDefault());
+				outstream.Write((ulong)0); // Bit to skip - the PD2 binary does the exact same thing
+			}
 
-            //outstream.Write(this.Transform);
-            //outstream.Write(this.Transform.M41); // Write the position out again, as for some reason
-            //outstream.Write(this.Transform.M42); // it's not stored in the main matrix
-            //outstream.Write(this.Transform.M43);
-            //outstream.Write(this.parentID);
+			outstream.Write(this.Transform);
+			outstream.Write(this.Transform.M41); // Write the position out again, as for some reason
+			outstream.Write(this.Transform.M42); // it's not stored in the main matrix
+			outstream.Write(this.Transform.M43);
+			outstream.Write(this.parentID);
 
-            //if (this.remaining_data != null)
-            //    outstream.Write(this.remaining_data);
-        }
+			if (this.remaining_data != null)
+				outstream.Write(this.remaining_data);
+		}
 
         public override string ToString()
         {
