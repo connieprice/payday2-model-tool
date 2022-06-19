@@ -60,8 +60,8 @@ namespace PD2ModelParser
                 "If the program is running in command-line mode, then" +
                 " the file commands will be run in sequence, eg.,",
                 "--load=a.diesel --import=b.obj --root-point=Hips ",
-                "    --import-pattern-uv=b_pattern_uv.obj --save=c.diesel",
-                "Will import a model called a.diesel, add an object, and save it as c.diesel",
+                "    --import-pattern-uv=b_pattern_uv.obj --save=c.model",
+                "Will import a model called a.diesel, add an object, and save it as c.model",
                 "",
                 "Note you can process many models in one run of the program, which is faster" +
                 " than running the program once for each model",
@@ -110,7 +110,7 @@ namespace PD2ModelParser
                     v => script.Add(new LoadModel() { File = v })
                 },
                 {
-                    "save=", "Save to a .diesel file",
+                    "save=", "Save to a .model file",
                     v => script.Add(new SaveModel() { File = v })
                 },
                 {
